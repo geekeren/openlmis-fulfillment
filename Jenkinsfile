@@ -10,7 +10,9 @@ properties([
   ]
 ])
 pipeline {
-    agent none
+    agent  {
+      label 'codebuilder'
+    }
     options {
         buildDiscarder(logRotator(
             numToKeepStr: env.BRANCH_NAME.equals("master") ? '15' : '3',
