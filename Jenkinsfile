@@ -1,13 +1,11 @@
 pipeline {
-  agent {
-    label 'codebuilder'
-    docker { image 'node:7-alpine' }
-  }
+  agent { label 'codebuilder' }
   stages {
+    stage('Install') {
+      steps { sh 'apk add -U nodejs' }
+    }
     stage('Build') {
-      steps {
-        sh 'node --version'
-      }
+      steps { sh 'node --version' }
     }
   }
 }
